@@ -33,7 +33,7 @@ public class VolatileExample {
         int cnt = 10;
 
         Thread t = new Thread(()-> System.out.println(cnt));
-        cnt = 7;
+//        cnt = 7;
         t.start();
 
     }
