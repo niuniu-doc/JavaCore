@@ -1,9 +1,0 @@
-spring:
-  profiles:
-    active: dev
-server:
-  port: 8080
-  tomcat:
-    max-threads: 1000
-    accept-count: 1000
-    max-connections: 2000
