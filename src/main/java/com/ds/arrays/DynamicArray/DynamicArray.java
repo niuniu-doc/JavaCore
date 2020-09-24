@@ -51,9 +51,9 @@ public class DynamicArray<E> {
         if (index < 0 || index > size) {
             throw new Exception("index should be between 0 and size. size = " + size);
         }
-        if (size == capacity) ensureCapacity(this.capacity);
-        for (int i = size; i > index; i--) {
-            data[i] = data[i-1];
+        if (size == capacity) ensureCapacity(2*capacity);
+        for (int i = size-1; i >= index; i--) {
+            data[i+1] = data[i];
         }
         data[index] = e;
         size++;
@@ -91,6 +91,14 @@ public class DynamicArray<E> {
         return data[index];
     }
 
+    public E getLast() throws Exception{
+        return get(size-1);
+    }
+
+    public E getFirst() throws Exception {
+        return get(0);
+    }
+
     public void set(int index, E e) throws Exception{
         if (index <0 || index >= size) {
             throw new Exception("illegal index.");
@@ -98,22 +106,24 @@ public class DynamicArray<E> {
         data[index] = e;
     }
 
-    public void remove(int index) throws Exception{
+    public E remove(int index) throws Exception{
         if (index <0 || index >= size) {
             throw new Exception("illegal index.");
         }
+        E ret = data[index];
         for (int i = index+1; i < size ; i++) {
             data[i-1] = data[i];
         }
-        data[size] = null;
         size--;
+        data[index] = null;
 
-        if (size < this.capacity / 2)
+        if (size < this.capacity / 4 && data.length / 2 != 0)
             ensureCapacity(this.capacity / 2);
+        return ret;
     }
 
-    public void removeFirst() throws Exception { remove(0);}
-    public void removeLast() throws Exception { remove(size);}
+    public E removeFirst() throws Exception { return remove(0);}
+    public E removeLast() throws Exception { return remove(size-1);}
 
     public void removeElement(E e) throws Exception{
         int index = find(e);
@@ -133,8 +143,11 @@ public class DynamicArray<E> {
 
     private void ensureCapacity(int newCap) {
         this.capacity = newCap;
-        E[] newData = (E[])new Object[this.capacity];
-        newData = Arrays.copyOf(data, this.size);
+        E[] newData = (E[])new Object[newCap];
+        //newData = Arrays.copyOf(data, this.size);
+        for (int i = 0; i < size; i++) {
+            newData[i] = data[i];
+        }
         data = newData;
     }
 }
