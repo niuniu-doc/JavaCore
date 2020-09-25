@@ -1,4 +1,4 @@
-package com.ds.queue.ArrayQueue;
+package com.ds.queue;
 
 public interface Queue<E> {
     int getSize();

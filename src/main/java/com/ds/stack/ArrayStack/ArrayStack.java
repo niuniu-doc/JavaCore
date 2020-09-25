@@ -1,6 +1,7 @@
 package com.ds.stack.ArrayStack;
 
 import com.ds.arrays.DynamicArray.DynamicArray;
+import com.ds.stack.Stack;
 
 public class ArrayStack<E> implements Stack<E> {
 

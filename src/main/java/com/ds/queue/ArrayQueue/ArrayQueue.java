@@ -1,6 +1,7 @@
 package com.ds.queue.ArrayQueue;
 
 import com.ds.arrays.DynamicArray.DynamicArray;
+import com.ds.queue.Queue;
 
 public class ArrayQueue<E> implements Queue<E> {
     private DynamicArray<E> queue;

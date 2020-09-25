@@ -1,4 +1,4 @@
-package com.ds.stack.ArrayStack;
+package com.ds.stack;
 
 public interface Stack<E> {
     boolean isEmpty();
