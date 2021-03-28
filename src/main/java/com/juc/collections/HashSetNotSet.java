@@ -15,7 +15,7 @@ public class HashSetNotSet {
          * 2. 使用 CopyOnWrite
          */
 //        Set<String> set = Collections.synchronizedSet(new HashSet<>());
-        final CopyOnWriteArraySet<Object> set = new CopyOnWriteArraySet<>();
+//        final CopyOnWriteArraySet<Object> set = new CopyOnWriteArraySet<>();
         Set<String> set = new CopyOnWriteArraySet<>();
         for (int i = 0; i < 10; i++) {
             new Thread(() -> {
