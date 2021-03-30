@@ -13,7 +13,7 @@ class ShareData {
         lock.lock();
         // 判断
         try {
-            while (number != 0) {
+            while (number != 0) { // 为避免虚假唤醒、此处必须使用 while，不能使用 if
                 condition.await(); // 等待、不能生产
             }
             number++; // 干活
