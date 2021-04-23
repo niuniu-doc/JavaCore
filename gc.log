@@ -26,7 +26,46 @@ Heap
   -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+DisableExplicitGC
   -XX:+ParallelRefProcEnabled
   -Xloggc:/u01/order-service-api/log/gc.log
-  -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintGCApplicationStoppedTime
+  -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+  -XX:+PrintGCApplicationStoppedTime
   -XX:+PrintTenuringDistribution -XX:+PrintAdaptiveSizePolicy
   -XX:+UseGCLogFileRotation -XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=30m
-  -XX:+UnlockExperimentalVMOptions -XX:G1MaxNewSizePercent=80
+  -XX:+UnlockExperimentalVMOptions
+  -XX:G1MaxNewSizePercent=80
+
+-server -Xms4g -Xmx4g
+-XX:MetaspaceSize=256m -XX:MaxMetaspaceSize=256m
+-Xss512k -XX:+UseG1GC -XX:G1ReservePercent=25
+-XX:ParallelGCThreads=24 -XX:SoftRefLRUPolicyMSPerMB=0
+-XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled
+-Xloggc:/u01/order-service-api/log/gc.log
+-XX:+PrintHeapAtGC -XX:+PrintGCDetails -XX:+PrintGCDateStamps
+-XX:+PrintGCApplicationStoppedTime -XX:+PrintTenuringDistribution
+-XX:+PrintAdaptiveSizePolicy -XX:+UseGCLogFileRotation
+-XX:NumberOfGCLogFiles=5 -XX:GCLogFileSize=30m
+-XX:+UnlockExperimentalVMOptions
+-XX:G1MaxNewSizePercent=80
+
+  {"name":"taxi_slave","driverClassName":"com.mysql.jdbc.Driver","jdbcUrl":"jdbc:mysql://SJ-mysql-s-ro-taxi-taxi0-online-f5-db.01zhuanche.com:6330/taxi_0?zeroDateTimeBehavior=convertToNull&amp;useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true&amp;failOverReadOnly=false&amp;connectTimeout=1500&amp;socketTimeout=2000","username":"o_taxi_r","password":"Q%UcHKjtXRGth9gQ","minimumIdle":20,"maximumPoolSize":100,"connectionTimeout":3000,"leakDetectionThreshold":10000,"connectionTestQuery":"SELECT 1"}
+[端内] 无车取消本次查询 minId:2244152969, maxId:2244153369, limit:400
+[2244152971, 2244152973
+
+[渠道] 无车取消本次查询 minId:2674244871, maxId:2674245271, limit:400
+[2674244873, 2674244875
+{
+    "name":"taxi_slave",
+    "driverClassName":"com.mysql.jdbc.Driver",
+    "jdbcUrl":"jdbc:mysql://SJ-mysql-s-ro-taxi-taxi0-online-f5-db.01zhuanche.com:6330/taxi_0?
+    autoReconnect=true&failOverReadOnly=false&connectTimeout=1500&socketTimeout=2000",
+    "username":"o_taxi_r",
+    "password":"Q%UcHKjtXRGth9gQ",
+    "minimumIdle":20,
+    "maximumPoolSize":100,
+    "connectionTimeout":3000,
+    "leakDetectionThreshold":10000,
+    "connectionTestQuery":"SELECT 1"
+}
+
+HikariPool-1 - Failed to validate connection
+com.mysql.jdbc.JDBC4Connection@7174224b
+(No operations allowed after connection closed.)
