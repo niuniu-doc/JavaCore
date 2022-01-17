@@ -1,4 +1,4 @@
-package com.multiThread;
+package com.multiThread.old;
 
 import java.util.concurrent.*;
 

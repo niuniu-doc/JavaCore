@@ -15,7 +15,7 @@ public class StudentClient {
         Thread xiaoming = new Thread(new StudentRunnable("xiaoming", punishment), "xiaoming");
         xiaoming.start();
 
-        Thread xiaoxue = new Thread(new StudentRunnable("xiaoxue", punishment), "xiaoming");
+        Thread xiaoxue = new Thread(new StudentRunnable("xiaoxue", punishment), "xiaoxue");
         xiaoxue.start();
     }
 }

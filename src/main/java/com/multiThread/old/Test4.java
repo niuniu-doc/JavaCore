@@ -1,4 +1,4 @@
-package com.multiThread;
+package com.multiThread.old;
 
 public class Test4 extends Thread{
     public Test4() {

@@ -1,4 +1,4 @@
-package com.multiThread;
+package com.multiThread.old;
 
 /**
  * 共享数据的情况

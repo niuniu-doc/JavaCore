@@ -1,4 +1,4 @@
-package com.multiThread;
+package com.multiThread.old;
 
 public class Test12 {
     static class SynchronizedObject {
