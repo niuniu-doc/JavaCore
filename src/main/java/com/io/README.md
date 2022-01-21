@@ -10,9 +10,8 @@
 nio 关键buffer实现: 
 byteBuffer, shortBuffer, intBuffer, longBuffer, FloatBuffer, DoubleBuffer, charBuffer, mappedByteBuffer等
 
-一般 Buffer 读取数据的步骤：
-1. 写入数据到buffer
-2. 
+写模式: position表示当前位置, limit表示可写的最大位置(capacity), 随写入数据, position的值增加
+读模式: 写数据到buffer时, position表当前模式, 从0开始(从读切换为写模式时, limit会被设置成写模式下的最大值)
 
 可以创建堆内buffer和堆外buffer
 ByteBuffer.allocate() 创建堆内buffer
@@ -48,4 +47,28 @@ isConnectable 是否可以连接server
 #### 通道间的数据传输
 `transferTo`: 将源通道的数据传输到目的通道
 `transferFrom`: 将来自源通道的数据传输到目的通道
+
+#### 常用API
+```
+写入: 
+1. 从channel读入buffer int byteReads = inChannel.read(buffer) 
+2. 将字节数组写入buffer buf.put(127) 
+
+3. 模式切换: flip() limit 设为读模式下的position, position设为0
+
+读取:
+4. buffer读取到channel int bytesWritten = outChannel.written(buffer) // read from channel to buffer
+5. 使用get从buffer读取 buffer.get()
+
+rewind() 将position设为0, limit不变,可以重新读取buffer中的全部数据
+clear() position设为0, limit设为capacity, buffer可以重新写入
+compact() 将未读的数据cp到buffer起始处, position设置为下一位置
+
+mark() 标记buffer中一个特定的position
+reset() 读取位置恢复到 mark设置的position
+
+equals()和compareTo() 
+equal() 不比较具体元素, 只对比元素类型，元素个数
+compareTo() 比较具体元素
+```
 
