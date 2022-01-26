@@ -22,12 +22,13 @@ public class NIOServer {
             ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
             InetSocketAddress address = new InetSocketAddress("127.0.0.1", 7890);
             serverSocketChannel.bind(address);
+            System.out.println(serverSocketChannel.isBlocking());
             serverSocketChannel.configureBlocking(false); // 设为非阻塞
+            System.out.println(serverSocketChannel.isBlocking());
 
             // 打开一个选择器, 并将serverSocketChannel注册进去,同时监听连接事件
             Selector selector = Selector.open();
             serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
-
             // 等待客户端连接
             while (true) {
                 // 等待3s，若返回0,相当于没有事件, 继续
